@@ -66,7 +66,7 @@ extension ViewController: UICollectionViewDelegate , UICollectionViewDataSource 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GridCell", for: indexPath) as! GridCell
         
-        let screen_width = (self.view.frame.size.width)-10
+        let screen_width = (self.view.frame.size.width)-15
         cell.imageWidth.constant = screen_width/2
         cell.imageHeight.constant = screen_width/2
         cell.configure(data: gridArray[indexPath.row])
@@ -125,7 +125,7 @@ extension ViewController: UICollectionViewDelegate , UICollectionViewDataSource 
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let screen_width = (self.view.frame.size.width)-10
+        let screen_width = (self.view.frame.size.width)-15
         let width : CGFloat
         let height : CGFloat
         
