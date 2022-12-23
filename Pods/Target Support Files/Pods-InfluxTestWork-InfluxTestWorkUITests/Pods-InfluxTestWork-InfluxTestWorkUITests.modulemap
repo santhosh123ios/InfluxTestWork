@@ -1,0 +1,6 @@
+framework module Pods_InfluxTestWork_InfluxTestWorkUITests {
+  umbrella header "Pods-InfluxTestWork-InfluxTestWorkUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

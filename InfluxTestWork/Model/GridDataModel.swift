@@ -7,16 +7,26 @@
 
 import Foundation
 
-struct GridItems : Codable {
-    var image: String?
+struct GridSelectionModel : Codable {
     var selactionFlag: Bool?
-    var id: Int?
-    var title: String?
-    var subTitle: String?
-    var message: String?
     var messageBoxFlag:Bool?
-    var showFlag: Bool?
-    var selactionIndex: Int?
-    
+    var selactedItemIndex: Int?
+    var arrow_index: Int?
 }
 
+struct GridModel: Codable {
+    var photos:Photos?
+    var stat: String?
+}
+
+struct Photos: Codable {
+    var page, pages, perpage, total: Int
+    var photo: [Photo]
+}
+    
+struct Photo: Codable {
+    var id, owner, secret, server: String
+    var farm: Int
+    var title: String
+    var ispublic, isfriend, isfamily: Int
+}

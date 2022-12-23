@@ -26,6 +26,12 @@ class GridCell: UICollectionViewCell {
     @IBOutlet weak var sizeView: UILabel!
     @IBOutlet weak var detailsView: UILabel!
     
+    @IBOutlet weak var mainImageView: UIImageView!
+    
+    
+    var indexPaths:Int?
+    
+    var gridData:GridModel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -56,12 +62,15 @@ class GridCell: UICollectionViewCell {
         view.layer.insertSublayer(shape, at: 0)
     }
     
-    func configure(data: GridItems)
+    func configure(selaction_data: GridSelectionModel,image_url:String)
     {
         
-        if data.selactionFlag!
+        print("SANTHOSH T : \(image_url)")
+        mainImageView.load.request(with: image_url)
+       
+        if selaction_data.selactionFlag!
         {
-            //selectedItemId = data.id!
+            //selectedItemId = selaction_data.id!
             mainView.layer.borderWidth = 2
             mainView.layer.borderColor = #colorLiteral(red: 0, green: 0.4078922272, blue: 1, alpha: 1)
             mainView.clipsToBounds = true
@@ -73,20 +82,18 @@ class GridCell: UICollectionViewCell {
             mainView.clipsToBounds = true
         }
         
-        if data.messageBoxFlag!
+        if selaction_data.messageBoxFlag!
         {
-            if data.showFlag!
-            {
                 mainView.isHidden = true
                 messageBoxView.isHidden = false
                 rightArrowHeight.constant = 20
                 leftArrowHeight.constant = 20
                 
-                nameView.text = data.title
-                sizeView.text = data.subTitle
-                detailsView.text = data.message
+//                nameView.text = selaction_data.title
+//                sizeView.text = selaction_data.subTitle
+//                detailsView.text = selaction_data.message
                 
-                if data.selactionIndex == 0
+                if selaction_data.arrow_index == 0
                 {
                     //is odd number
                     triangleViewRight.isHidden = true
@@ -98,17 +105,6 @@ class GridCell: UICollectionViewCell {
                     triangleViewRight.isHidden = false
                     triangleViewLeft.isHidden = true
                 }
-            }
-            else
-            {
-                rightArrowHeight.constant = 0
-                leftArrowHeight.constant = 0
-                
-                mainView.isHidden = true
-                messageBoxView.isHidden = true
-                triangleViewRight.isHidden = true
-                triangleViewLeft.isHidden = true
-            }
         }
         else
         {
@@ -117,6 +113,16 @@ class GridCell: UICollectionViewCell {
             
             triangleViewRight.isHidden = true
             triangleViewLeft.isHidden = true
+            
+            
+            /////
+            rightArrowHeight.constant = 0
+            leftArrowHeight.constant = 0
+            
+//            mainView.isHidden = true
+//            messageBoxView.isHidden = true
+//            triangleViewRight.isHidden = true
+//            triangleViewLeft.isHidden = true
         }
     }
     
